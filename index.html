@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NO JEM Release Promotion Plan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f1014;
+            --card-bg: #1a1c23;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --accent-pink: #ff2a6d;
+            --accent-cyan: #05d9e8;
+            --border-color: #2d3748;
+            --success-color: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan));
+            border-radius: 2px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.05em;
+            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 4rem;
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid var(--accent-pink);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin: 2rem 0 1rem;
+            color: #fff;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Cards & Grids */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-cyan);
+        }
+
+        /* Timeline Table */
+        .timeline-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-table th,
+        .timeline-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .timeline-table th {
+            background-color: rgba(255, 42, 109, 0.1);
+            color: var(--accent-pink);
+            font-weight: 700;
+        }
+
+        .timeline-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .timeline-date {
+            color: var(--text-primary);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* Checklist */
+        .task-list {
+            list-style: none;
+        }
+
+        .task-list li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .task-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--accent-cyan);
+            border-radius: 4px;
+        }
+
+        .task-list li strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        /* Feature List (Trend Analysis) */
+        .trend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .trend-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .trend-title {
+            color: var(--accent-pink);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Low Budget Strategies */
+        .strategy-item {
+            background: linear-gradient(180deg, var(--card-bg) 0%, rgba(26, 28, 35, 0.5) 100%);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-cyan);
+        }
+
+        .strategy-title {
+            color: #fff;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-free {
+            background-color: var(--success-color);
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 99px;
+            font-weight: 600;
+        }
+
+        /* Action Plan */
+        .action-steps {
+            counter-reset: step;
+        }
+
+        .action-step {
+            position: relative;
+            padding: 0 0 2rem 3rem;
+            border-left: 2px dashed var(--border-color);
+        }
+
+        .action-step:last-child {
+            border-left: none;
+        }
+
+        .action-step::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: -1rem;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background-color: var(--accent-pink);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        strong.highlight {
+            color: var(--accent-cyan);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background-color: #fff;
+                color: #000;
+            }
+
+            .card {
+                border: 1px solid #ccc;
+                box-shadow: none;
+                background: none;
+            }
+
+            h1,
+            h2,
+            h3 {
+                color: #000;
+                -webkit-text-fill-color: initial;
+            }
+
+            .badge-free {
+                background-color: #ddd;
+                color: #000;
+                border: 1px solid #000;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Schedule Draft</h1>
+            <div class="subtitle">スケジュール案資料：2026.02.22 Release Strategy</div>
+        </header>
+
+        <section>
+            <h2>01. 現状確認とマイルストーン</h2>
+            <div class="card">
+                <p style="margin-bottom: 1.5rem;">
+                    <strong>目標:</strong> 2026年2月22日（土）「NO JEM」リリース<br>
+                    <strong>現在地:</strong> 2/1（木）からのプリセーブ＆カウントダウンに向けた最終調整フェーズ
+                </p>
+                <table class="timeline-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">時期</th>
+                            <th style="width: 15%;">フェーズ</th>
+                            <th>主なアクション</th>
+                            <th style="width: 20%;">担当</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="timeline-date">〜1/31</td>
+                            <td>準備</td>
+                            <td>ビジュアル撮影完了、ジャケット完成</td>
+                            <td>寺崎さん</td>
+                        </tr>
+                        <tr>
+                            <td class="timeline-date">2月初旬</td>
+                            <td>準備</td>
+                            <td>MV納品</td>
+                            <td>寺崎さん/クリエイター</td>
+                        </tr>
+                        <tr>
+                            <td class="timeline-date">2/1〜</td>
+                            <td>始動</td>
+                            <td><strong>プリセーブリンク公開</strong>、カウントダウン開始、TikTok施策開始</td>
+                            <td>GATE/本人</td>
+                        </tr>
+                        <tr>
+                            <td class="timeline-date">2/15〜</td>
+                            <td>加熱</td>
+                            <td>毎日投稿（ショート/ストーリー）、カウントダウン強化</td>
+                            <td>寺崎さん</td>
+                        </tr>
+                        <tr>
+                            <td class="timeline-date">2/22</td>
+                            <td>リリース</td>
+                            <td>SNS生配信、リリース告知一斉投稿、ファン交流</td>
+                            <td>全員</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h2>02. リリース当日までにやるべきこと (To-Do)</h2>
+            <div style="display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+
+                <div class="card">
+                    <h3>🏢 GATE</h3>
+                    <ul class="task-list">
+                        <li>
+                            <strong>プリセーブリンクの発行・確認</strong>
+                            TuneCore等のディストリビューターからLinkfireやSmartURLを発行。
+                        </li>
+                        <li>
+                            <strong>プレスリリース/EPKの作成</strong>
+                            GATE関係者向けメルマガを作成。
+                        </li>
+                        <li>
+                            <strong>TikTokインフルエンサーへの依頼管理</strong>
+                            候補者選定、DM送付、ギフティング等の調整。
+                        </li>
+                        <li>
+                            <strong>SNS広告の準備</strong>
+                            Instagram/TikTok広告のクリエイティブ確認と設定（実施する場合）。
+                        </li>
+                        <li>
+                            <strong>Spotify公式プレイリストへのピッチ</strong>
+                            TuneCore経由でリリース7日前までに完了必須。
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>🎤 寺崎さん</h3>
+                    <ul class="task-list">
+                        <li>
+                            <strong>カウントダウン素材の作成</strong>
+                            「あと○日！」の画像やショート動画ストック（2週間分推奨）。
+                        </li>
+                        <li>
+                            <strong>TikTok/Reels用コンテンツの「溜め撮り」</strong>
+                            リリース直前は多忙なため、ダンス/リップシンク動画をまとめて撮影。
+                        </li>
+                        <li>
+                            <strong>先行チラ見せ投稿</strong>
+                            ジャケットの一部、歌詞の一節などを小出しにして期待感を煽る。
+                        </li>
+                        <li>
+                            <strong>ファン参加型企画の告知</strong>
+                            「#NOJEM」を使ったUGC（投稿）を促すための呼びかけ動画作成。
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2>03. インディーズトレンド分析 (2024-2025)</h2>
+            <p>成功している新人アーティストの共通点分析。</p>
+            <div class="trend-grid" style="margin-top: 1.5rem;">
+
+                <div class="card">
+                    <span class="trend-icon">🔥</span>
+                    <div class="trend-title">「量」より「質」の熱量</div>
+                    <p>フォロワー数より「コメント」「保存」してくれるコアファンが重要。地道なDM/コメ返がSpotify再生数に直結する。</p>
+                </div>
+
+                <div class="card">
+                    <span class="trend-icon">📱</span>
+                    <div class="trend-title">"Unpolished" なコンテンツ</div>
+                    <p>プロっぽい映像より、iPhoneで撮った無加工の「リアルな裏側」がTikTokで伸びる。「完璧じゃない」方が共感呼びがち。</p>
+                </div>
+
+                <div class="card">
+                    <span class="trend-icon">🎯</span>
+                    <div class="trend-title">最初の3秒に勝負</div>
+                    <p>新規リスナーはほぼショート動画から。イントロを飛ばし、サビから始まる動画構成が必須。</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2>04. すぐできる施策案</h2>
+
+            <div class="strategy-item">
+                <div class="strategy-title">
+                    1. プリセーブ・キャンペーンの徹底
+                </div>
+                <p><strong>重要性:</strong> 初日の再生数がSpotifyアルゴリズム掲載を左右する。<br>
+                    <strong>具体策:</strong> スクショDMで限定待ち受け配布、お礼動画送信など。デジタル特典なら原価0円。
+                </p>
+            </div>
+
+            <div class="strategy-item">
+                <div class="strategy-title">
+                    2. TikTok "Before/After" 戦略
+                </div>
+                <p>「曲ができるまで」「振付を覚える前と後」など、物語（プロセス）を見せて応援したくなる心理を突く。</p>
+            </div>
+
+            <div class="strategy-item">
+                <div class="strategy-title">
+                    3. 相互コラボレーション
+                </div>
+                <p>親和性の高い他アーティストとコラボ配信や、相互の曲を入れたプレイリストシェアでファン層を交換。</p>
+            </div>
+
+            <div class="strategy-item">
+                <div class="strategy-title">
+                    4. YouTube Premiere (プレミア公開)
+                </div>
+                <p>公開30分前からチャット欄に本人が常駐し、カウントダウンをファンと盛り上げ「お祭り感」を演出。</p>
+            </div>
+
+        </section>
+
+        <section>
+            <h2>05. 推奨アクション (Next Steps)</h2>
+            <div class="action-steps">
+                <div class="action-step">
+                    <p><strong>「猫」テーマのショート動画量産</strong><br>
+                        メンバーが猫耳をつけるなどの簡易演出で「踊ってみた」を量産。<br>
+                        ハッシュタグ <strong class="highlight">#猫ミーム #猫の日</strong> に便乗する。</p>
+                </div>
+                <div class="action-step">
+                    <p><strong>2/22 (猫の日) カウントダウン</strong><br>
+                        リリース日が2/22であることを最大限利用。<br>
+                        「猫の日まであと○日！」という切り口で猫好き層へリーチ。</p>
+                </div>
+                <div class="action-step">
+                    <p><strong>プリセーブ特典の設定</strong><br>
+                        「NO JEM」限定スマホ壁紙（ジャケットのアザーカット等）を用意しキャンペーン実施。<br>
+                        ファンの承認欲求と所有欲を満たす。</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+
+</html>
